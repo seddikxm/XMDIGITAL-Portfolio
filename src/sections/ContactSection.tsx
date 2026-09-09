@@ -3,7 +3,7 @@ import { Mail, MapPin, Instagram, MessageCircle } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
 import ContactButton from '../components/ContactButton'
 
-const EMAIL = 'hello@xmdigital.com'
+const EMAIL = 'contact@xmdigital.online'
 
 const INFO_ITEMS = [
   { icon: Mail, label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
