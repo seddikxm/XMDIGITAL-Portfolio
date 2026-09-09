@@ -24,18 +24,35 @@ const INPUT_CLASSES =
   'w-full rounded-full border-2 border-[#D7E2EA]/30 bg-transparent px-6 py-3 text-sm font-light tracking-wide text-[#D7E2EA] placeholder-[#D7E2EA]/40 outline-none transition-colors duration-200 focus:border-[#D7E2EA]/70 sm:px-8 sm:py-4 sm:text-base'
 
 export default function ContactSection() {
-  const [sent, setSent] = useState(false)
+  const [result, setResult] = useState('')
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const data = new FormData(e.currentTarget)
-    const name = data.get('name')
-    const email = data.get('email')
-    const message = data.get('message')
-    const subject = encodeURIComponent(`New project inquiry from ${name}`)
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`)
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
-    setSent(true)
+    const form = e.currentTarget
+    setSending(true)
+    setResult('')
+
+    const formData = new FormData(form)
+    formData.append('access_key', '07b53775-e6f3-4875-bbdb-f7c0566b58c5')
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      })
+      const data = await response.json()
+      if (data.success) {
+        setResult("Message sent! We'll get back to you soon.")
+        form.reset()
+      } else {
+        setResult('Something went wrong — please try again.')
+      }
+    } catch {
+      setResult('Something went wrong — please try again.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -130,10 +147,13 @@ export default function ContactSection() {
                 className={`${INPUT_CLASSES} resize-none rounded-[32px] sm:rounded-[40px]`}
               />
               <div className="mt-2 flex flex-col items-start gap-4">
-                <ContactButton type="submit" label="Send Message" />
-                {sent && (
+                <ContactButton
+                  type="submit"
+                  label={sending ? 'Sending…' : 'Send Message'}
+                />
+                {result && (
                   <span className="text-sm font-light tracking-wide text-[#D7E2EA]/60">
-                    Your email client should open — or write us directly at {EMAIL}
+                    {result}
                   </span>
                 )}
               </div>
