@@ -1,7 +1,7 @@
 import type { MouseEventHandler, ReactNode } from 'react'
 
 const GRADIENT_BUTTON_CLASSES =
-  'group inline-flex items-center gap-3 rounded-full px-7 py-3 text-xs font-medium uppercase tracking-widest text-white outline outline-2 outline-offset-[-3px] outline-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.98] sm:px-9 sm:py-3.5 sm:text-sm md:px-11 md:py-4 md:text-base'
+  'group inline-flex min-h-[44px] items-center gap-3 rounded-full px-7 py-3 text-xs font-medium uppercase tracking-widest text-white outline outline-2 outline-offset-[-3px] outline-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.98] sm:px-9 sm:py-3.5 sm:text-sm md:px-11 md:py-4 md:text-base'
 
 const GRADIENT_BUTTON_STYLE = {
   background:

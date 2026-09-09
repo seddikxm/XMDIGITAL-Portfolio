@@ -52,7 +52,7 @@ function MarqueeRow({
           src={src}
           alt=""
           loading="lazy"
-          className="h-[270px] w-[420px] shrink-0 rounded-2xl object-cover"
+          className="h-[190px] w-[300px] shrink-0 rounded-2xl object-cover sm:h-[230px] sm:w-[360px] md:h-[270px] md:w-[420px]"
         />
       ))}
     </div>

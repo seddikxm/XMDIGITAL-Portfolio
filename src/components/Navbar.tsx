@@ -37,7 +37,7 @@ export default function Navbar() {
           type="button"
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D7E2EA]/20 text-[#D7E2EA] transition-colors duration-200 hover:bg-[#D7E2EA]/10 md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D7E2EA]/20 text-[#D7E2EA] transition-colors duration-200 hover:bg-[#D7E2EA]/10 md:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>

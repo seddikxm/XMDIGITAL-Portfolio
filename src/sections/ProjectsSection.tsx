@@ -57,8 +57,8 @@ function ProjectCard({
   const scale = useTransform(progress, [index / total, 1], [1, targetScale])
 
   return (
-    <div className="h-[105vh]">
-      <div className="sticky top-24 md:top-32">
+    <div className="mb-10 md:mb-0 md:h-[105vh]">
+      <div className="md:sticky md:top-32">
         <motion.div
           style={{ scale, top: index * 28 }}
           className="relative rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:rounded-[50px] sm:p-6 md:rounded-[60px] md:p-8"
